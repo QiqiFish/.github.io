@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本地图 - 旅行指南</title>
+    <!-- 引入Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配色和主站保持一致 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        japan: {
+                            beige: '#F5F5F0',   // 奶杏米色
+                            blue: '#4A6C8C',
+                            red: '#E63946',
+                            gray: '#333333'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</head>
+
+<!-- 页面背景：奶杏米色（和你网站统一） -->
+<body class="bg-japan-beige min-h-screen">
+
+    <!-- 顶部导航栏（和首页保持一致） -->
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <h1 class="text-xl font-bold text-japan-blue">日本地图</h1>
+            <!-- 移动端汉堡菜单按钮 -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-gray-600 hover:text-japan-red focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- 桌面端导航 -->
+            <div class="hidden md:flex space-x-4">
+                <a href="首页.html" class="text-gray-600 hover:text-japan-red">返回首页</a>
+            </div>
+        </div>
+        <!-- 移动端下拉菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-3 space-y-2">
+                <a href="首页2.html" class="block text-gray-600 hover:text-japan-red py-2">返回首页</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主体内容：日本地图 -->
+    <div class="max-w-6xl mx-auto px-4 pt-24 sm:pt-28 pb-12 sm:pb-20">
+        
+        <!-- 标题 -->
+        <div class="text-center mb-6 sm:mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-amber-600">日本地图</h2>
+            <p class="text-amber-500 mt-2 text-sm sm:text-base">关西标红</p>
+        </div>
+
+        <!-- 地图容器 -->
+        <div class="relative w-full bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-6 flex justify-center">
+            
+            <!-- 日本地图图片 -->
+            <img 
+                src="图片/2..png" 
+                alt="日本地图"
+                class="max-w-full h-auto rounded-xl max-h-[500px] sm:max-h-[700px]"
+            >
+
+</body>
+</html>

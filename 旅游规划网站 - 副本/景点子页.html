@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热门景点 - 日本旅游</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        japan: { beige: '#F5F5F0', blue: '#4A6C8C', red: '#E63946', gray: '#333333' }
+                    },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-hover { @apply hover:text-japan-red transition-colors duration-300; }
+            .card-shadow { @apply shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105; }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        // 淡入动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</head>
+<body class="bg-japan-beige text-japan-gray font-sans">
+    <!-- 统一导航栏 -->
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-xl font-bold text-japan-blue transition-all duration-300 hover:scale-105">日本旅行</h1>
+                </div>
+                <!-- 移动端汉堡菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-japan-gray hover:text-japan-red focus:outline-none transition-all duration-300 hover:scale-110">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- 桌面端导航菜单 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="首页.html" class="nav-hover font-medium transition-all duration-300">首页</a>
+                    <a href="景点子页.html" class="nav-hover font-medium text-japan-red border-b-2 border-japan-red transition-all duration-300">景点</a>
+                    <a href="美食子页.html" class="nav-hover font-medium transition-all duration-300">美食</a>
+                    <a href="https://hotels.ctrip.com/international/country78/g556/" class="nav-hover font-medium transition-all duration-300">住宿</a>
+                    <a href="攻略子页.html" class="nav-hover font-medium transition-all duration-300">攻略</a>
+                    <a href="圣地巡礼子页.html" class="nav-hover font-medium transition-all duration-300">圣地巡礼</a>
+                </div>
+            </div>
+        </div>
+        <!-- 移动端下拉菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-md transition-all duration-300">
+            <div class="px-4 py-3 space-y-2">
+                <a href="首页.html" class="block nav-hover font-medium py-2 transition-all duration-300">首页</a>
+                <a href="景点子页.html" class="block nav-hover font-medium py-2 text-japan-red transition-all duration-300">景点</a>
+                <a href="美食子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">美食</a>
+                <a href="https://hotels.ctrip.com/international/country78/g556/" class="block nav-hover font-medium py-2 transition-all duration-300">住宿</a>
+                <a href="攻略子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">攻略</a>
+                <a href="圣地巡礼子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">圣地巡礼</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 子页头部 -->
+    <header class="pt-20 sm:pt-24 pb-6 sm:pb-10 max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-japan-blue">大阪·京都·奈良 景点大全</h2>
+        <p class="mt-2 text-gray-600 text-sm sm:text-base">关西经典景点一站式打卡</p>
+    </header>
+
+    <!-- 自定义景点列表 -->
+    <section class="max-w-7xl mx-auto px-4 py-8 min-h-screen">
+        <!-- 大阪 -->
+        <div class="mb-8 sm:mb-12">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 px-4 py-2 bg-blue-50 inline-block rounded-lg">大阪地区</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-4">
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/海游馆.jpg" alt="海游馆" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">海游馆</h4><p class="text-sm mt-1">世界级水族馆，亲子游玩首选</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/海滨广场.jpg" alt="海滨广场" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">海滨广场</h4><p class="text-sm mt-1">大阪港浪漫观景地</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/道顿堀.webp" alt="道顿堀" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">道顿堀</h4><p class="text-sm mt-1">美食天堂，网红打卡地标</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/通天阁.jpg" alt="通天阁" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">通天阁</h4><p class="text-sm mt-1">大阪地标，俯瞰全城美景</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/日本桥电器街.jpg" alt="日本桥电器街" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">日本桥电器街</h4><p class="text-sm mt-1">动漫·电器购物圣地</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/大版城公园.webp" alt="大阪城公园" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">大阪城公园</h4><p class="text-sm mt-1">历史古迹，樱花胜地</p></div></div>
+            </div>
+        </div>
+
+        <!-- 京都 -->
+        <div class="mb-8 sm:mb-12">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 px-4 py-2 bg-purple-50 inline-block rounded-lg">京都地区</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-4">
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/清水寺.webp" alt="清水寺" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">清水寺</h4><p class="text-sm mt-1">世界文化遗产，京都象征</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/伏见稻荷大社.webp" alt="伏见稻荷大社" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">伏见稻荷大社</h4><p class="text-sm mt-1">千本鸟居，日式经典</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/二年坂三年坂.jpg" alt="二年坂三年坂" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">二年坂三年坂</h4><p class="text-sm mt-1">古风街道，日式风情</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/京阿尼.jpg" alt="京阿尼" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">京阿尼</h4><p class="text-sm mt-1">动漫圣地，粉丝打卡</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/出町柳.jpg" alt="出町柳" class="w-full h-36 sm:h-44 object-cover"><div class="p-4"><h4 class="font-bold">出町柳</h4><p class="text-sm mt-1">京都静谧文艺街区</p></div></div>
+            </div>
+
+        </div>
+
+        <!-- 奈良 -->
+        <div class="mb-8 sm:mb-12 flex-grow">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 px-4 py-2 bg-green-50 inline-block rounded-lg">奈良地区</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-4">
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/奈良公园.jpg" alt="奈良公园" class="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover" loading="lazy"><div class="p-4"><h4 class="font-bold">奈良公园</h4><p class="text-sm mt-1">萌鹿相伴，千年古迹</p></div></div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in"><img src="图片/春日大社.jpg" alt="春日大社" class="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover" loading="lazy"><div class="p-4"><h4 class="font-bold">春日大社</h4><p class="text-sm mt-1">世界遗产，青铜灯笼</p></div></div>
+            </div>
+        </div>
+
+        <!-- 日本全国旅游景点按钮 -->
+        <a href="https://www.japan-travel.cn/" class="block bg-gradient-to-r from-red-500 to-red-600 rounded-xl overflow-hidden card-shadow hover:from-red-600 hover:to-red-700 transition-all duration-300 p-6 sm:p-8 text-white text-center">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+                <svg class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div class="text-center sm:text-left">
+                    <h4 class="font-bold text-xl sm:text-2xl">日本全国旅游景点</h4>
+                    <p class="text-sm text-red-100 mt-1">探索更多精彩景点，点击进入 →</p>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <!-- 黑色底栏 -->
+    <footer class="bg-black mt-12 sm:mt-16 py-5 sm:py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-300 text-xs sm:text-sm">
+            <p>© 2026 日本旅游指南 | 关西景点大全</p>
+        </div>
+    </footer>
+</body>
+</html>
