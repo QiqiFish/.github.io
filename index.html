@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本旅游 - 简约旅行指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        japan: {
+                            beige: '#F5F5F0',   // 页面主底色
+                            blue: '#4A6C8C',    // 主题蓝色
+                            red: '#E63946',     // 强调红色
+                            gray: '#333333'     // 文字灰色
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-hover { @apply hover:text-japan-red transition-colors duration-300; }
+            .card-shadow { @apply shadow-md hover:shadow-lg transition-all duration-300; }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        // 淡入动画效果（非一次性）
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        // 当元素离开视口时，移除visible类，以便下次重新触发动画
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // 为需要动画的元素添加fade-in类
+            const animatedElements = document.querySelectorAll('section > div, section > h2, .grid > a');
+            animatedElements.forEach(element => {
+                element.classList.add('fade-in');
+                observer.observe(element);
+            });
+        });
+    </script>
+</head>
+<body class="bg-japan-beige text-japan-gray font-sans">
+    <!-- 固定导航栏：始终悬浮在页面顶部 -->
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- 网站Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-xl font-bold text-japan-blue transition-all duration-300 hover:scale-105">日本旅行/关西</h1>
+                </div>
+                <!-- 移动端汉堡菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-japan-gray hover:text-japan-red focus:outline-none transition-all duration-300 hover:scale-110">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- 导航菜单：桌面端显示 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-hover font-medium text-japan-red border-b-2 border-japan-red transition-all duration-300">首页</a>
+                    <a href="景点子页.html" class="nav-hover font-medium transition-all duration-300">景点</a>
+                    <a href="美食子页.html" class="nav-hover font-medium transition-all duration-300">美食</a>
+                    <a href="https://hotels.ctrip.com/international/country78/g556/" class="nav-hover font-medium transition-all duration-300">住宿</a>
+                    <a href="攻略子页.html" class="nav-hover font-medium transition-all duration-300">攻略</a>
+                    <a href="圣地巡礼子页.html" class="nav-hover font-medium transition-all duration-300">圣地巡礼</a>
+                </div>
+            </div>
+        </div>
+        <!-- 移动端下拉菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-md transition-all duration-300">
+            <div class="px-4 py-3 space-y-2">
+                <a href="首页.html" class="block nav-hover font-medium py-2 text-japan-red transition-all duration-300">首页</a>
+                <a href="景点子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">景点</a>
+                <a href="美食子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">美食</a>
+                <a href="https://hotels.ctrip.com/international/country78/g556/" class="block nav-hover font-medium py-2 transition-all duration-300">住宿</a>
+                <a href="攻略子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">攻略</a>
+                <a href="圣地巡礼子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">圣地巡礼</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 头部英雄区：日本大阪港背景大图 -->
+     <header class="pt-16 pb-12 md:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 md:mt-8">
+            <div class="h-[280px] sm:h-[350px] md:h-[400px] rounded-2xl bg-[url('https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/d52a1334c9bd4b5d80062da6ca7daedb.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=2026042320545003DF21960E64ABB928B2&rrcfp=d52e923b&x-expires=1777553691&x-signature=5IZH64R3ksAEkyX6WjJEpYkx1E0%3D')] bg-cover bg-center flex items-center px-6 md:px-10">
+            <!-- 标题文本框：半透明背景 -->
+            <div class="bg-white/80 p-4 sm:p-6 rounded-lg backdrop-blur-sm relative">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">探索日本</h2>
+                <p class="text-base sm:text-lg">大阪·京都·奈良 · 一站式旅行攻略</p>
+                <!-- 地图按钮：右上角灰色按钮，跳转地图页面 -->
+                <a href="日本地图.html" class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-gray-400 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm hover:bg-gray-500 transition-colors">
+                    地图
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 核心内容区：旅行准备 + 旅行分类 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <!-- 横框架：准备行李 -->
+        <div class="mb-8 bg-white rounded-2xl shadow-md p-6 sm:p-8">
+            <div class="flex items-start gap-4">
+                <div class="flex-shrink-0">
+                    <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-japan-blue mb-3">准备行李</h3>
+                    <p class="text-gray-600 mb-4">合理的行李准备能让你的日本之旅更加舒适便捷。点击了解详细的行李清单和打包建议。</p>
+                    <a href="准备行李子页.html" class="inline-block bg-japan-blue text-white px-4 py-2 rounded-lg hover:bg-japan-red transition-colors">查看详细清单</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 横框架：签证办理注意事项 -->
+        <div class="mb-8 bg-white rounded-2xl shadow-md p-6 sm:p-8 border-l-4 border-red-500">
+            <div class="flex items-start gap-4">
+                <div class="flex-shrink-0">
+                    <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-.933-1.964-.933-2.732 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-japan-red mb-3">签证办理注意事项 <span class="text-xs font-normal bg-red-100 text-red-600 px-2 py-0.5 rounded-full">重要</span></h3>
+                    <ul class="text-gray-600 space-y-2 mb-4">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 font-bold">•</span>
+                            <span>提前至少15-20个工作日办理，避免高峰期延误</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 font-bold">•</span>
+                            <span>提供真实有效的材料，如在职证明、银行流水等</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 font-bold">•</span>
+                            <span>单次签证有效期一般为3个月，停留期不超过15天</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 font-bold">•</span>
+                            <span>如选择代办服务，确保选择正规旅行社</span>
+                        </li>
+                    </ul>
+                    <a href="签证办理注意子页.html" class="inline-block bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">查看详细指南</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 独立板块：旅行准备（出行必备项） -->
+        <h2 class="text-xl sm:text-2xl font-bold mb-6 text-center">旅行准备</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-3 sm:gap-6 mb-10">
+            <!-- 1. 办理护照：跳转护照办理子页 -->
+            <a href="https://s.nia.gov.cn/mps/bszy/gmcrg/slpthz/" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2 text-lg">办理护照</h3>
+                <p class="text-sm text-amber-500">出国必备证件·本地出入境办理</p>
+            </a>
+            <!-- 2. 办理签证：跳转签证办理子页 -->
+            <a href="https://traveldetail.fliggy.com/item.htm?ali_refid=a3_420434_1006%3A1196030085%3AH%3A0xXOt1MNrD3LLe5GC94rAQ%3D%3D%3A0856cc2c586bd6e27c36da9fd5be8acf&ali_trackid=282_0856cc2c586bd6e27c36da9fd5be8acf&id=606607452481&mi_id=0000hxfO0yRLHe9MsZDFTJqCvxMzK1Pu4te0gFxMD1MoT2k&mm_sceneid=1_0_178610130_0&spm=a21n57.1.hoverItem.5&utparam=%7B%22aplus_abtest%22%3A%22a1e7eef0e09f7db93e90128fb12b1861%22%7D&xxc=ad_ztc&_fli_webview=true&_use_stream=1&hybrid=true&_fli_online=true&disableNav=YES&titleBarHidden=2&pc=1" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2 text-lg">办理签证</h3>
+                <p class="text-sm text-amber-500">日本单次签证·旅行社代办</p>
+            </a>
+            <!-- 3. VISIT JAPAN WEB：重点标注，跳转入境填写子页 -->
+            <a href="https://www.vjw.digital.go.jp/main/#/vjwplo001" class="bg-amber-50 rounded-xl p-6 text-center card-shadow border-2 border-red-500">
+                <h3 class="font-bold text-amber-600 mb-2 text-lg">
+                    <span class="text-red-600 font-black text-xl">VISIT JAPAN WEB</span>
+                </h3>
+                <p class="text-sm text-amber-500 font-bold">入境必填·不可遗漏</p>
+            </a>
+            <!-- 4. 国内交通：跳转国内交通子页 -->
+            <a href="https://www.ctrip.com/" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2 text-lg">国内交通</h3>
+                <p class="text-sm text-amber-500">前往机场·高铁/大巴/网约车</p>
+            </a>
+            <!-- 5. 出境交通：跳转出境交通子页 -->
+            <a href="https://www.ctrip.com/" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2 text-lg">出境交通</h3>
+                <p class="text-sm text-amber-500">国际航班</p>
+            </a>
+        </div>
+
+        <!-- 旅行分类：核心功能模块 -->
+        <h2 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">旅行分类</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
+            <!-- 1. 热门景点：跳转景点子页 -->
+            <a href="景点子页.html" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2">热门景点</h3>
+                <p class="text-sm text-amber-500">大阪·京都·奈良</p>
+            </a>
+            <!-- 2. 特色美食：跳转美食子页 -->
+            <a href="美食子页.html" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2">特色美食</h3>
+                <p class="text-sm text-amber-500">章鱼烧·鳗鱼饭</p>
+            </a>
+            <!-- 3. 精选住宿：跳转住宿子页 -->
+            <a href="https://hotels.ctrip.com/international/country78/g556/" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2">精选住宿</h3>
+                <p class="text-sm text-amber-500">民宿·日式旅馆</p>
+            </a>
+            <!-- 4. 旅行攻略：跳转攻略子页 -->
+            <a href="攻略子页.html" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2">旅行攻略</h3>
+                <p class="text-sm text-amber-500">行程·交通规划</p>
+            </a>
+            <!-- 5. 圣地巡礼：跳转圣地巡礼子页 -->
+            <a href="圣地巡礼子页.html" class="bg-amber-50 rounded-xl p-6 text-center card-shadow">
+                <h3 class="font-bold text-amber-600 mb-2">圣地巡礼</h3>
+                <p class="text-sm text-amber-500">动漫·游戏取景地</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- 热门推荐：精选日本真实景点/美食图片 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <h2 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">热门推荐</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            <!-- 推荐1：伏见稻荷大社（京都）→ 跳转景点详情子页 -->
+            <a href="景点子页.html" class="bg-white rounded-xl overflow-hidden card-shadow">
+                <img src="图片/伏见稻荷大社.webp" alt="伏见稻荷大社" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">伏见稻荷大社</h3>
+                    <p class="text-sm text-gray-600 mt-2">京都经典地标，千本鸟居</p>
+                </div>
+            </a>
+            <!-- 推荐2：大阪城公园（大阪）→ 跳转景点详情子页 -->
+            <a href="景点子页.html" class="bg-white rounded-xl overflow-hidden card-shadow">
+                <img src="图片/大版城公园.webp" alt="大阪城公园" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">大阪城公园</h3>
+                    <p class="text-sm text-gray-600 mt-2">大阪历史象征，天守阁</p>
+                </div>
+            </a>
+            <!-- 推荐3：道顿堀（大阪）→ 跳转美景点情子页 -->
+            <a href="景点子页.html" class="bg-white rounded-xl overflow-hidden card-shadow">
+                <img src="图片/道顿堀.webp" alt="道顿堀" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">道顿堀</h3>
+                    <p class="text-sm text-gray-600 mt-2">大阪豪华商业街</p>
+                </div>
+            </a>
+            <!-- 推荐4：二年坂三年坂（京都）→ 跳转景点详情子页 -->
+            <a href="景点子页.html" class="bg-white rounded-xl overflow-hidden card-shadow">
+                <img src="图片/二年坂三年坂.jpg" alt="二年坂三年坂" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">二年坂三年坂</h3>
+                    <p class="text-sm text-gray-600 mt-2">京都古风街道，日式风情</p>
+                </div>
+            </a>
+            <!-- 推荐5：清水寺（京都）→ 跳转景点详情子页 -->
+            <a href="景点子页.html" class="bg-white rounded-xl overflow-hidden card-shadow">
+                <img src="图片/清水寺.webp" alt="清水寺" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">清水寺</h3>
+                    <p class="text-sm text-gray-600 mt-2">世界文化遗产，京都象征</p>
+                </div>
+            </a>
+            <!-- 推荐6：奈良公园（奈良）→ 跳转景点详情子页 -->
+            <a href="景点子页.html" class="bg-white rounded-xl overflow-hidden card-shadow">
+                <img src="图片/奈良公园.jpg" alt="奈良公园" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">奈良公园</h3>
+                    <p class="text-sm text-gray-600 mt-2">萌鹿相伴，千年古迹</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <!-- 底部页脚：黑色背景 -->
+    <footer class="bg-black mt-12 sm:mt-16 py-6 sm:py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-300 text-sm">
+            <p>© 2026 日本旅游指南 | 作者：Fish </p>
+        </div>
+    </footer>
+</body>
+</html>

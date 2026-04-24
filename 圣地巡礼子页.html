@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣地巡礼 - 日本旅游</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        japan: {
+                            beige: '#F5F5F0',
+                            blue: '#4A6C8C',
+                            red: '#E63946',
+                            gray: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-hover { @apply hover:text-japan-red transition-colors duration-300; }
+            .card-shadow { @apply shadow-md hover:shadow-lg transition-all duration-300; }
+            .fade-in {
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+        }
+    </style>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+
+    </script>
+</head>
+
+<body class="bg-japan-beige min-h-screen text-japan-gray font-sans">
+
+    <!-- 导航栏（和全站统一） -->
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <h1 class="text-xl font-bold text-japan-blue transition-all duration-300 hover:scale-105">日本旅行</h1>
+            <!-- 移动端汉堡菜单按钮 -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-japan-gray hover:text-japan-red focus:outline-none transition-all duration-300 hover:scale-110">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- 桌面端导航 -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-hover font-medium transition-all duration-300">首页</a>
+                <a href="景点子页.html" class="nav-hover font-medium transition-all duration-300">景点</a>
+                <a href="美食子页.html" class="nav-hover font-medium transition-all duration-300">美食</a>
+                <a href="https://hotels.ctrip.com/international/country78/g556/" class="nav-hover font-medium transition-all duration-300">住宿</a>
+                <a href="攻略子页.html" class="nav-hover font-medium transition-all duration-300">攻略</a>
+                <a href="圣地巡礼子页.html" class="nav-hover font-medium text-japan-red border-b-2 border-japan-red transition-all duration-300">圣地巡礼</a>
+            </div>
+        </div>
+        <!-- 移动端下拉菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-md transition-all duration-300">
+            <div class="px-4 py-3 space-y-2">
+                <a href="首页.html" class="block nav-hover font-medium py-2 transition-all duration-300">首页</a>
+                <a href="景点子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">景点</a>
+                <a href="美食子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">美食</a>
+                <a href="https://hotels.ctrip.com/international/country78/g556/" class="block nav-hover font-medium py-2 transition-all duration-300">住宿</a>
+                <a href="攻略子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">攻略</a>
+                <a href="圣地巡礼子页.html" class="block nav-hover font-medium py-2 text-japan-red transition-all duration-300">圣地巡礼</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 子页头部 -->
+    <header class="pt-16 sm:pt-20 pb-6 sm:pb-10 max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-japan-blue mb-2">日本动漫圣地巡礼</h2>
+        <p class="text-gray-600 text-sm sm:text-base">探访动漫与游戏的取景地，重温经典场景</p>
+    </header>
+
+    <!-- 圣地巡礼内容 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 大阪地区 -->
+        <div class="mb-8 sm:mb-12 fade-in">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 px-4 py-2 bg-blue-50 inline-block rounded-lg">大阪地区</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-4">
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/通天阁.jpg" alt="通天阁" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">通天阁 <span class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">大阪</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《名侦探柯南》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded">🎮 动漫取景</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/道顿堀.webp" alt="道顿堀" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">道顿堀 <span class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">大阪</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《Love Live! Sunshine!!》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded">🎮 动漫取景</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/日本桥电器街.jpg" alt="日本桥电器街" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">日本桥电器街 <span class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">大阪</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《我的青春恋爱物语果然有问题》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded">🎮 动漫取景</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/海游馆.jpg" alt="海游馆" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">海游馆 <span class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">大阪</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《魔法少女小圆》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-pink-100 text-pink-600 px-2 py-1 rounded">🎬 动画场景</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 京都地区 -->
+        <div class="mb-8 sm:mb-12 fade-in">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 px-4 py-2 bg-purple-50 inline-block rounded-lg">京都地区</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-4">
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/清水寺.webp" alt="清水寺" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">清水寺 <span class="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full">京都</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《轻音少女》《五等分的新娘》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded">🎮 动漫取景</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/二年坂三年坂.jpg" alt="二年坂三年坂" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">二年坂三年坂 <span class="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full">京都</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《缘之空》《甘城光辉乐园》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded">🎮 动漫取景</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/京阿尼.jpg" alt="京阿尼" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">京阿尼工作室 <span class="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full">京都</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《凉宫春日》《冰菓》《紫罗兰》制作地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-red-100 text-red-600 px-2 py-1 rounded">🏢 工作室</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/伏见稻荷大社.webp" alt="伏见稻荷大社" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">伏见稻荷大社 <span class="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full">京都</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《我心里危险的东西》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded">🎮 动漫取景</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 奈良地区 -->
+        <div class="mb-8 sm:mb-12 fade-in">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 px-4 py-2 bg-green-50 inline-block rounded-lg">奈良地区</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-4">
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/奈良公园.jpg" alt="奈良公园" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">奈良公园 <span class="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full">奈良</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《我心里危险的东西》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded">🎮 动漫取景</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover:scale-105 transition-transform duration-300">
+                    <img src="图片/春日大社.jpg" alt="春日大社" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg flex items-center gap-2">春日大社 <span class="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full">奈良</span></h4>
+                        <p class="text-sm text-gray-600 mt-1">《犬夜叉》《元气囝仔》取景地</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded">🎮 动漫取景</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大阪地区圣地巡礼 -->
+        <section class="max-w-7xl mx-auto px-4 py-8">
+            <h3 class="text-xl font-bold text-japan-blue mb-6">🏙️ 大阪地区圣地巡礼</h3>
+            <div class="grid grid-cols-1 gap-8">
+                <!-- 日本桥电器街 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-blue-600 mb-2">日本桥电器街</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒556-0005 Osaka, Naniwa Ward, Nipponbashi, 1 Chome</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《Love Live!》</span>
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《偶像大师》</span>
+                            </div>
+                            <p class="text-gray-700">日本桥电器街是大阪的秋叶原，充满了动漫、游戏和电子产品商店，是许多校园题材动漫的取景地。</p>
+                        </div>
+                        <div class="relative h-80 md:h-96 overflow-visible">
+                            <img src="图片/日本桥电器街.jpg" alt="日本桥电器街" class="w-full h-full object-contain transition-transform duration-500 hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 通天阁 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-blue-600 mb-2">通天阁</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒556-0002 Osaka, Naniwa Ward, Shinsekai, 1 Chome−18−6</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《阿松》</span>
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《银魂》</span>
+                            </div>
+                            <p class="text-gray-700">通天阁是大阪的地标建筑，位于新世界地区，是许多动漫作品中大阪的象征。</p>
+                        </div>
+                        <div class="relative h-80 md:h-96 overflow-visible">
+                            <img src="图片/通天阁.jpg" alt="通天阁" class="w-full h-full object-contain transition-transform duration-500 hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大阪城天守阁 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-blue-600 mb-2">大阪城天守阁</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒540-0002 Osaka, Chuo Ward, Osakajo, 1-1</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《五等分的新娘》</span>
+                            </div>
+                            <p class="text-gray-700">大阪城天守阁是大阪的象征，也是《五等分的新娘》中重要的取景地。动画中多次出现天守阁的全景，尤其是烟花大会的场景更是令人印象深刻。</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/大阪城天守阁-五等分的新娘.jpg" alt="大阪城天守阁-五等分的新娘" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/大版城天守阁.jpg" alt="大阪城天守阁" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 京都地区圣地巡礼 -->
+        <section class="max-w-7xl mx-auto px-4 py-8">
+            <h3 class="text-xl font-bold text-japan-blue mb-6">⛩️ 京都地区圣地巡礼</h3>
+            <div class="grid grid-cols-1 gap-8">
+                <!-- 伏见稻荷大社 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-red-600 mb-2">伏见稻荷大社</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒612-0882 Kyoto, Fushimi Ward, Fushimimiya, 68</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《中二病也要谈恋爱！》</span>
+                                <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《我心里危险的东西》</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">伏见稻荷大社的千本鸟居是京都最著名的景点之一，也是许多动漫的取景地，尤其是《中二病也要谈恋爱！》中六花和勇太的重要场景。</p>
+                            <div>
+                                <img src="图片/伏见稻荷大社.webp" alt="伏见稻荷大社" class="w-full h-48 object-cover rounded-lg transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/伏见稻荷大社-中二病也要谈恋爱！.jpg" alt="伏见稻荷大社-中二病也要谈恋爱！" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/伏见稻荷大社-我心里危险的东西.jpg" alt="伏见稻荷大社-我心里危险的东西" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 出町柳商店街 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-red-600 mb-2">出町柳商店街</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒606-0001 Kyoto, Sakyo Ward, Demachiyanagi</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《中二病也要谈恋爱！》</span>
+                                <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《玉子市场》</span>
+                            </div>
+                            <p class="text-gray-700">出町柳商店街是京都的传统商店街，也是《玉子市场》的主要取景地，充满了温馨的日常氛围。</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/出町柳商店街-中二病也要谈恋爱！玉子市场.jpg" alt="出町柳商店街-中二病也要谈恋爱！玉子市场" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/出町柳商店街.jpg" alt="出町柳商店街" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 清水寺 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-red-600 mb-2">清水寺</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒605-0862 Kyoto, Higashiyama Ward, Kiyomizu, 1 Chome−294</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《幸运星》</span>
+                            </div>
+                            <p class="text-gray-700">清水寺是京都最著名的寺庙之一，也是《幸运星》中柊家姐妹经常光顾的地方。</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/清水寺-幸运星.jpg" alt="清水寺-幸运星" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/清水寺.webp" alt="清水寺" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 银阁寺 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-red-600 mb-2">银阁寺</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒606-0015 Kyoto, Sakyo Ward, Kitashirakawa, 2 Chome−1</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《堀与宫村》</span>
+                            </div>
+                            <p class="text-gray-700">银阁寺是京都的世界文化遗产，也是《堀与宫村》中重要的取景地。</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/银阁寺-堀与宫村.jpg" alt="银阁寺-堀与宫村" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/银阁寺.webp" alt="银阁寺" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 鸭川三角洲 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-red-600 mb-2">鸭川三角洲</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒606-0006 Kyoto, Sakyo Ward, Demachiyanagi</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《玉子爱情故事》</span>
+                            </div>
+                            <p class="text-gray-700">鸭川三角洲是京都的自然景观，也是《玉子爱情故事》中玉子和饼藏的重要约会地点。</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/鸭川三角洲-玉子爱情故事.jpg" alt="鸭川三角洲-玉子爱情故事" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/鸭川三角洲.jpg" alt="鸭川三角洲" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 奈良地区圣地巡礼 -->
+        <section class="max-w-7xl mx-auto px-4 py-8">
+            <h3 class="text-xl font-bold text-japan-blue mb-6">🦌 奈良地区圣地巡礼</h3>
+            <div class="grid grid-cols-1 gap-8">
+                <!-- 奈良公园 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-green-600 mb-2">奈良公园</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒630-8211 Nara, Nara City, Todaiji, 406-1</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《我心里危险的东西》</span>
+                            </div>
+                            <p class="text-gray-700">奈良公园以成群的鹿闻名，也是《我心里危险的东西》中重要的取景地，充满了自然与和谐的氛围。</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/奈良公园-我心里危险的东西.jpg" alt="奈良公园-我心里危险的东西" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/奈良公园2.jpg" alt="奈良公园" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 奈良公园興福寺 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg text-green-600 mb-2">奈良公园興福寺</h4>
+                            <p class="text-gray-600 mb-3">📍 日本〒630-8211 Nara, Nara City, Todaiji, 406-1</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2 mb-2">《鹿乃子乃子虎视眈眈》</span>
+                            </div>
+                            <p class="text-gray-700">興福寺是奈良的重要寺庙，也是《鹿乃子乃子虎视眈眈》的取景地，与奈良公园融为一体。</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/奈良公园興福寺-鹿乃子乃子虎视眈眈.jpg" alt="奈良公园興福寺-鹿乃子乃子虎视眈眈" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                            <div class="relative h-48 overflow-visible">
+                                <img src="图片/奈良公园興福寺.jpg" alt="奈良公园興福寺" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 横框架 -->
+        <div class="mb-8 fade-in">
+            <a href="https://www.anitabi.cn/map/" target="_blank" class="block bg-gradient-to-r from-purple-600 to-pink-500 rounded-2xl p-6 text-white hover:shadow-lg transition-all duration-300">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-xl font-bold mb-2"> ⭐ 动漫圣地巡礼</h3>
+                        <p class="text-sm opacity-90">探索更多的动漫取景地</p>
+                    </div>
+                    <div class="bg-white text-purple-600 font-bold px-4 py-2 rounded-full hover:bg-gray-100 transition-colors duration-300">
+                        立即探索 →
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 巡礼攻略 -->
+        <div class="mb-8 sm:mb-12 fade-in">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 px-4 py-2 bg-red-50 inline-block rounded-lg">巡礼攻略</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                <div class="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+                    <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        <span class="text-2xl">🎯</span> 巡礼小贴士
+                    </h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 p-2 bg-red-50 rounded-lg">
+                            <span class="text-red-500 font-bold mt-0.5">1</span>
+                            <span class="text-gray-700">提前收集动漫中的场景截图，便于现场对比</span>
+                        </li>
+                        <li class="flex items-start gap-3 p-2 bg-blue-50 rounded-lg">
+                            <span class="text-blue-500 font-bold mt-0.5">2</span>
+                            <span class="text-gray-700">使用 Google Maps 标记巡礼地点，规划最优路线</span>
+                        </li>
+                        <li class="flex items-start gap-3 p-2 bg-green-50 rounded-lg">
+                            <span class="text-green-500 font-bold mt-0.5">3</span>
+                            <span class="text-gray-700">注意尊重当地文化，不要在禁止拍照的地方拍照</span>
+                        </li>
+                        <li class="flex items-start gap-3 p-2 bg-purple-50 rounded-lg">
+                            <span class="text-purple-500 font-bold mt-0.5">4</span>
+                            <span class="text-gray-700">携带足够的电池和存储卡，拍摄大量照片</span>
+                        </li>
+                        <li class="flex items-start gap-3 p-2 bg-amber-50 rounded-lg">
+                            <span class="text-amber-500 font-bold mt-0.5">5</span>
+                            <span class="text-gray-700">可以使用专门的圣地巡礼APP，如「アニメロケ」</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+                    <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        <span class="text-2xl">📱</span> 推荐APP
+                    </h4>
+                    <ul class="space-y-3">
+                        <li class="p-3 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg">
+                            <strong class="text-purple-600">アニメロケ</strong>
+                            <p class="text-sm text-gray-600 mt-1">专门面向圣地巡礼爱好者的APP</p>
+                        </li>
+                        <li class="p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg">
+                            <strong class="text-blue-600">Google Maps</strong>
+                            <p class="text-sm text-gray-600 mt-1">标记地点、规划路线、导航指引</p>
+                        </li>
+                        <li class="p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
+                            <strong class="text-green-600">换乘案内</strong>
+                            <p class="text-sm text-gray-600 mt-1">日本公共交通换乘查询</p>
+                        </li>
+                        <li class="p-3 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg">
+                            <strong class="text-amber-600">小米翻译</strong>
+                            <p class="text-sm text-gray-600 mt-1">日语实时翻译，沟通无障碍</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 推荐路线 -->
+        <div class="mb-8 sm:mb-12 fade-in">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 px-4 py-2 bg-amber-50 inline-block rounded-lg">推荐路线</h3>
+            <div class="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+                <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
+                    <span class="text-2xl">🚶‍♂️</span> 经典巡礼路线
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border-2 border-blue-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                            <strong class="text-blue-700">一日巡礼路线</strong>
+                        </div>
+                        <p class="text-sm text-gray-700">大阪：日本桥电器街 → 道顿堀 → 通天阁</p>
+                        <div class="mt-2 flex gap-1">
+                            <span class="text-xs bg-blue-200 text-blue-700 px-2 py-0.5 rounded">🎮 动漫</span>
+                            <span class="text-xs bg-blue-200 text-blue-700 px-2 py-0.5 rounded">🍽️ 美食</span>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border-2 border-purple-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                            <strong class="text-purple-700">二日巡礼路线</strong>
+                        </div>
+                        <p class="text-sm text-gray-700">Day1: 大阪 → Day2: 京都（清水寺 → 二年坂 → 京阿尼）</p>
+                        <div class="mt-2 flex gap-1">
+                            <span class="text-xs bg-purple-200 text-purple-700 px-2 py-0.5 rounded">🎮 动漫</span>
+                            <span class="text-xs bg-purple-200 text-purple-700 px-2 py-0.5 rounded">🏛️ 世界遗产</span>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border-2 border-green-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
+                            <strong class="text-green-700">三日巡礼路线</strong>
+                        </div>
+                        <p class="text-sm text-gray-700">Day1: 大阪 → Day2: 京都 → Day3: 奈良</p>
+                        <div class="mt-2 flex gap-1">
+                            <span class="text-xs bg-green-200 text-green-700 px-2 py-0.5 rounded">🎮 动漫</span>
+                            <span class="text-xs bg-green-200 text-green-700 px-2 py-0.5 rounded">🦌 小鹿</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 温馨提示 -->
+        <div class="mb-8 fade-in">
+            <div class="bg-gradient-to-r from-japan-red to-pink-500 rounded-2xl p-4 sm:p-6 text-white">
+                <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                    <span class="text-2xl">💡</span> 温馨提示
+                </h4>
+                <p class="text-sm opacity-90">圣地巡礼时请注意安全，不要影响当地居民正常生活。部分景点如京阿尼工作室仅可外观，请遵守相关规定。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 黑色底栏 -->
+    <footer class="bg-black mt-12 sm:mt-16 py-5 sm:py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-300 text-xs sm:text-sm">
+            © 2026 日本旅游指南 | 圣地巡礼攻略
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特色美食 - 日本旅游</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        japan: { beige: '#F5F5F0', blue: '#4A6C8C', red: '#E63946', gray: '#333333' }
+                    },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-hover { @apply hover:text-japan-red transition-colors duration-300; }
+            .card-shadow { @apply shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105; }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .food-item {
+                @apply mb-6 p-5 rounded-xl bg-white;
+            }
+        }
+    </style>
+    <script>
+        // 淡入动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</head>
+<body class="bg-japan-beige text-japan-gray font-sans">
+    <!-- 统一导航栏 -->
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-xl font-bold text-japan-blue transition-all duration-300 hover:scale-105">日本旅行</h1>
+                </div>
+                <!-- 移动端汉堡菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-japan-gray hover:text-japan-red focus:outline-none transition-all duration-300 hover:scale-110">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- 桌面端导航菜单 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-hover font-medium transition-all duration-300">首页</a>
+                    <a href="景点子页.html" class="nav-hover font-medium transition-all duration-300">景点</a>
+                    <a href="美食子页.html" class="nav-hover font-medium text-japan-red border-b-2 border-japan-red transition-all duration-300">美食</a>
+                    <a href="https://hotels.ctrip.com/international/country78/g556/" class="nav-hover font-medium transition-all duration-300">住宿</a>
+                    <a href="攻略子页.html" class="nav-hover font-medium transition-all duration-300">攻略</a>
+                    <a href="圣地巡礼子页.html" class="nav-hover font-medium transition-all duration-300">圣地巡礼</a>
+                </div>
+            </div>
+        </div>
+        <!-- 移动端下拉菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-md transition-all duration-300">
+            <div class="px-4 py-3 space-y-2">
+                <a href="首页.html" class="block nav-hover font-medium py-2 transition-all duration-300">首页</a>
+                <a href="景点子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">景点</a>
+                <a href="美食子页.html" class="block nav-hover font-medium py-2 text-japan-red transition-all duration-300">美食</a>
+                <a href="https://hotels.ctrip.com/international/country78/g556/" class="block nav-hover font-medium py-2 transition-all duration-300">住宿</a>
+                <a href="攻略子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">攻略</a>
+                <a href="圣地巡礼子页.html" class="block nav-hover font-medium py-2 transition-all duration-300">圣地巡礼</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 子页头部 -->
+    <header class="pt-20 sm:pt-24 pb-6 sm:pb-10 max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-pink-600">关西特色美食</h2>
+        <p class="mt-2 text-gray-600 text-sm sm:text-base">大阪·京都·奈良地道美味</p>
+    </header>
+
+    <!-- 自定义美食列表 -->
+    <section class="max-w-7xl mx-auto px-4 py-6 sm:py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-4">
+            <!-- 章鱼烧 -->
+            <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in transition-all duration-300">
+                <div class="relative overflow-hidden">
+                    <img src="图片/章鱼烧.jpg" alt="章鱼烧 - 大阪代表性美食，外酥里嫩，Q弹章鱼粒" class="w-full h-48 sm:h-60 object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-4 sm:p-6">
+                    <h4 class="font-bold text-lg sm:text-xl">章鱼烧</h4>
+                    <p class="text-sm mt-2 text-gray-600">大阪代表性美食，外酥里嫩，Q弹章鱼粒，街头必吃小吃</p>
+                </div>
+            </div>
+            <!-- 鳗鱼饭 -->
+            <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in transition-all duration-300">
+                <div class="relative overflow-hidden">
+                    <img src="图片/鳗鱼饭.jpg" alt="鳗鱼饭 - 日式经典料理，蒲烧鳗鱼搭配米饭" class="w-full h-48 sm:h-60 object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-4 sm:p-6">
+                    <h4 class="font-bold text-lg sm:text-xl">鳗鱼饭</h4>
+                    <p class="text-sm mt-2 text-gray-600">日式经典料理，蒲烧鳗鱼搭配米饭，酱香浓郁，营养美味</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in transition-all duration-300">
+                <div class="relative overflow-hidden">
+                    <img src="图片/拉面.jpg" alt="拉面 - 酱油汤底，搭配叉烧、笋干、溏心蛋" class="w-full h-48 sm:h-60 object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-4 sm:p-6">
+                    <h4 class="font-bold text-lg sm:text-xl">拉面</h4>
+                    <p class="text-sm mt-2 text-gray-600">酱油汤底为主，面条偏细，搭配叉烧、笋干、溏心蛋，清爽不腻</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl overflow-hidden card-shadow fade-in transition-all duration-300">
+                <div class="relative overflow-hidden">
+                    <img src="图片/牛肉可乐饼.jpg" alt="牛肉可乐饼 - 外皮酥脆，内馅柔软多汁" class="w-full h-48 sm:h-60 object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-4 sm:p-6">
+                    <h4 class="font-bold text-lg sm:text-xl">牛肉可乐饼</h4>
+                    <p class="text-sm mt-2 text-gray-600">牛肉制成的可乐饼，外皮酥脆，内馅柔软多汁，一口爆浆</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关西美食全攻略 -->
+    <section class="max-w-7xl mx-auto px-4 py-8 sm:py-12">
+        <!-- 攻略标题 -->
+        <div class="text-center mb-10 fade-in">
+            <h2 class="text-2xl sm:text-3xl font-bold text-japan-blue mb-4">🍜 关西美食全攻略</h2>
+            <p class="text-gray-600 text-sm sm:text-base max-w-3xl mx-auto">
+                关西地区（大阪、京都、神户、奈良等）被誉为日本的美食天堂，以丰富的街头小吃、精致的传统料理和优质食材闻名。这里的饮食文化融合了历史传承与创新精神，形成了独特的"关西风味"。
+            </p>
+        </div>
+
+        <!-- 一、大阪 -->
+        <div class="mb-12 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-white text-2xl">🏮</div>
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-japan-blue">大阪：天下厨房的街头美食盛宴</h3>
+                    <p class="text-gray-500 text-sm mt-1">大阪素有"食い倒れ"(吃到破产)的称号，街头小吃文化极为发达</p>
+                </div>
+            </div>
+
+            <!-- 大阪美食列表 -->
+            <div class="space-y-4">
+                <!-- 大阪烧 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🥞</span>
+                        <h4 class="font-bold text-lg text-gray-800">大阪烧</h4>
+                        <span class="text-xs bg-rose-100 text-rose-600 px-2 py-0.5 rounded-full">必吃</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">关西版 savory pancake，面糊+大量卷心菜+肉/海鲜，铁板煎制，口感蓬松</p>
+                    <div class="bg-rose-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-rose-700"><strong>推荐吃法：</strong>挤上特制酱汁+美乃滋，撒柴鱼片(会"跳舞")+海苔粉，可加炒面做"摩登烧"</p>
+                    </div>
+                </div>
+
+                <!-- 章鱼烧 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🐙</span>
+                        <h4 class="font-bold text-lg text-gray-800">章鱼烧</h4>
+                        <span class="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full">原创</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">大阪原创小吃，小麦面糊包裹章鱼块+天妇罗碎+腌姜+葱花，圆形铁板烤制</p>
+                    <div class="bg-orange-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-orange-700"><strong>推荐吃法：</strong>淋上甜咸酱汁+美乃滋，撒柴鱼片+海苔粉，一口一个烫嘴才地道</p>
+                    </div>
+                </div>
+
+                <!-- 炸串 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍢</span>
+                        <h4 class="font-bold text-lg text-gray-800">炸串</h4>
+                        <span class="text-xs bg-amber-100 text-amber-600 px-2 py-0.5 rounded-full">人气</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">猪肉/鸡肉/海鲜/蔬菜裹薄面糊炸制，外酥里嫩</p>
+                    <div class="bg-amber-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-amber-700"><strong>推荐吃法：</strong>蘸特制酱汁(只能蘸一次！)，配发酵卷心菜解腻</p>
+                    </div>
+                </div>
+
+                <!-- 乌冬面 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍜</span>
+                        <h4 class="font-bold text-lg text-gray-800">乌冬面</h4>
+                        <span class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">经典</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">关西乌冬偏粗，口感Q弹，汤头清澈(出汁+酱油)</p>
+                    <div class="bg-blue-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-blue-700"><strong>推荐吃法：</strong>冷乌冬配葱花+芥末+酱油，热乌冬配天妇罗，推荐"釜扬げ乌冬"</p>
+                    </div>
+                </div>
+
+                <!-- 串炸 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍖</span>
+                        <h4 class="font-bold text-lg text-gray-800">串炸</h4>
+                        <span class="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full">深夜食堂</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">深夜食堂必备，鸡肉串/内脏串炭火烤制，刷甜酱油</p>
+                    <div class="bg-red-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-red-700"><strong>推荐吃法：</strong>芝士豆腐串必点，晚6点前到店免排队</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 推荐地点 -->
+            <div class="mt-6 bg-gradient-to-r from-rose-100 to-pink-100 rounded-xl p-4 sm:p-5 fade-in">
+                <div class="flex items-start gap-3">
+                    <span class="text-xl">📍</span>
+                    <div>
+                        <h5 class="font-bold text-rose-700 mb-2">推荐地点</h5>
+                        <p class="text-sm text-rose-600">道顿堀、心斋桥、黑门市场、通天阁周边（うさぎや老铺大阪烧、赤鬼章鱼烧）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 二、京都 -->
+        <div class="mb-12 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-2xl">⛩️</div>
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-japan-blue">京都：千年古都的精致料理艺术</h3>
+                    <p class="text-gray-500 text-sm mt-1">京都料理讲究季节感、食材原味和视觉美感，体现"和敬清寂"的茶道精神</p>
+                </div>
+            </div>
+
+            <!-- 京都美食列表 -->
+            <div class="space-y-4">
+                <!-- 怀石料理 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍱</span>
+                        <h4 class="font-bold text-lg text-gray-800">怀石料理</h4>
+                        <span class="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full">高级</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">日本最高级料理之一，一汁三菜基础上发展，注重季节食材与器皿搭配</p>
+                    <div class="bg-purple-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-purple-700"><strong>推荐体验：</strong>选择"京怀石"，品尝京野菜（九条葱、加茂茄子、万愿寺辣椒、圣护院萝卜）的独特风味</p>
+                    </div>
+                </div>
+
+                <!-- 汤豆腐 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🫕</span>
+                        <h4 class="font-bold text-lg text-gray-800">汤豆腐</h4>
+                        <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full">素食</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">京都代表性素食，软水制作的豆腐，清淡细腻，突出豆香</p>
+                    <div class="bg-indigo-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-indigo-700"><strong>推荐体验：</strong>清水寺周边老店，"湯豆腐鍋"配柚子醋，冬季暖身佳品</p>
+                    </div>
+                </div>
+
+                <!-- 京都拉面 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍜</span>
+                        <h4 class="font-bold text-lg text-gray-800">京都拉面</h4>
+                        <span class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">特色</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">汤底清澈（鸡骨+小鱼干），面条偏细，叉烧肥而不腻，配京野菜</p>
+                    <div class="bg-blue-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-blue-700"><strong>推荐体验：</strong>麺屋極鶏的"鶏だく"拉面，汤浓味鲜，"レンゲが立つ"的浓稠度</p>
+                    </div>
+                </div>
+
+                <!-- 京渍物 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🥒</span>
+                        <h4 class="font-bold text-lg text-gray-800">京渍物</h4>
+                        <span class="text-xs bg-teal-100 text-teal-600 px-2 py-0.5 rounded-full">传统</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">京都传统腌菜，种类繁多（千切大根、茄子、黄瓜等），酸甜咸平衡</p>
+                    <div class="bg-teal-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-teal-700"><strong>推荐体验：</strong>作为配菜搭配米饭，或在茶会中食用，体现"一期一会"的美学</p>
+                    </div>
+                </div>
+
+                <!-- 抹茶甜点 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍵</span>
+                        <h4 class="font-bold text-lg text-gray-800">抹茶甜点</h4>
+                        <span class="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full">必尝</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">京都抹茶闻名世界，浓郁微苦，制成各种甜点</p>
+                    <div class="bg-green-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-green-700"><strong>推荐体验：</strong>宇治抹茶冰淇淋、抹茶蕨饼、抹茶芭菲，推荐"中村藤吉"本店</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 三、奈良 -->
+        <div class="mb-12 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-full flex items-center justify-center text-white text-2xl">🦌</div>
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-japan-blue">奈良：古都的质朴风味与乡土料理</h3>
+                    <p class="text-gray-500 text-sm mt-1">奈良作为日本古都，保留了许多传统乡土料理，以柿叶寿司和奈良渍最为著名</p>
+                </div>
+            </div>
+
+            <!-- 奈良美食列表 -->
+            <div class="space-y-4">
+                <!-- 柿叶寿司 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍣</span>
+                        <h4 class="font-bold text-lg text-gray-800">柿叶寿司</h4>
+                        <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">代表</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">奈良代表性料理，寿司饭+鱼肉（多为鲷鱼/青花鱼）用柿叶包裹，腌制数天</p>
+                    <div class="bg-amber-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-amber-800"><strong>推荐体验：</strong>柿叶香气渗入米饭，微酸开胃，作为便当或伴手礼，推荐"柿叶寿司 万叶"</p>
+                    </div>
+                </div>
+
+                <!-- 奈良渍 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🥕</span>
+                        <h4 class="font-bold text-lg text-gray-800">奈良渍</h4>
+                        <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">传统</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">奈良传统腌菜，以"千切大根"(萝卜丝)为主，用米糠+盐+曲发酵，酸甜爽脆</p>
+                    <div class="bg-yellow-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-yellow-800"><strong>推荐体验：</strong>作为早餐配菜，或搭配奈良茶，体现古都的朴素饮食文化</p>
+                    </div>
+                </div>
+
+                <!-- 飞鸟锅 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍲</span>
+                        <h4 class="font-bold text-lg text-gray-800">飞鸟锅</h4>
+                        <span class="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full">乡土</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">奈良乡土火锅，用鸡肉+蔬菜+豆腐+蒟蒻煮制，汤底清淡（出汁+酱油）</p>
+                    <div class="bg-orange-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-orange-700"><strong>推荐体验：</strong>冬季在奈良公园附近老店品尝，暖身又美味</p>
+                    </div>
+                </div>
+
+                <!-- 麻薯 -->
+                <div class="food-item bg-white">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🍡</span>
+                        <h4 class="font-bold text-lg text-gray-800">麻薯</h4>
+                        <span class="text-xs bg-stone-100 text-stone-600 px-2 py-0.5 rounded-full">茶点</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 ml-10">奈良麻薯口感Q弹，有甜味和咸味两种，配黄豆粉或酱油</p>
+                    <div class="bg-stone-50 rounded-lg p-3 ml-10">
+                        <p class="text-xs text-stone-700"><strong>推荐体验：</strong>作为茶点，在奈良的神社寺庙周边小店购买，新鲜现做</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 推荐地点 -->
+            <div class="mt-6 bg-gradient-to-r from-amber-100 to-yellow-100 rounded-xl p-4 sm:p-5 fade-in">
+                <div class="flex items-start gap-3">
+                    <span class="text-xl">📍</span>
+                    <div>
+                        <h5 class="font-bold text-amber-700 mb-2">推荐地点</h5>
+                        <p class="text-sm text-amber-600">奈良公园周边、奈良町传统街区、东大寺附近</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结语 -->
+        <div class="bg-gradient-to-r from-japan-blue to-indigo-600 rounded-2xl p-6 sm:p-8 text-white text-center fade-in">
+            <p class="text-sm sm:text-base leading-relaxed">
+                关西美食不仅是味觉的享受，更是文化的体验。从大阪的热闹街头到京都的幽静茶屋，奈良的质朴乡土料理，每一口都蕴含着关西地区的历史与风情。
+            </p>
+        </div>
+    </section>
+
+    <!-- 黑色底栏 -->
+    <footer class="bg-black mt-12 sm:mt-16 py-5 sm:py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-300 text-xs sm:text-sm">
+            <p>© 2026 日本旅游指南 | 关西美食推荐</p>
+        </div>
+    </footer>
+</body>
+</html>
